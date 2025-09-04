@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wheel App
 
-## Getting Started
+React ile geliştirilmiş bir **Hediye Çarkı uygulaması**.  
+Kullanıcı çarkı çevirerek ödüller kazanabilir. Çark dönüşü ve geri sayım mekanizması **localStorage** ile yönetilir.  
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Özellikler
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Animasyonlu çark dönüşü (Framer Motion kullanıldı).  
+- Ödüller dinamik olarak tanımlanabilir.  
+- Çark çevirme butonu geri sayım ile tekrar kullanım için kilitlenir.  
+- Kazanılan ödül kullanıcıya gösterilir.  
+- Modüler component yapısı:
+  - `WheelSvg` → Çarkın görseli
+  - `WheelArrow` → Çark üzerindeki ok
+  - `SpinButton` → Spin butonu
+  - `WinningItem` → Kazanılan ödül gösterimi
+  - `WheelTitle` → Çark başlığı ve açıklaması
+  - `Wheel.module.css` → Stillerin yer aldığı css dosyası
+  - `Wheel` → Çark sisteminin bütünü
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Kurulum
 
-## Learn More
+1. Depoyu klonla ve proje dizinine gel:
+    --> Git Bash veya CMD ile:
 
-To learn more about Next.js, take a look at the following resources:
+    git clone <repo-link>
+    cd wheel-app
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Gerekli paketleri yükle:
+    npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. Projeyi Başlat:
+    npm run dev
 
-## Deploy on Vercel
+43. Tarayıcıda aç: 
+    - Local:        http://localhost:3000
+    - Network:      http://192.168.1.6:3000
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Kullanım
+
+ * Çevir butonuna tıklayınca çark döner ve geri sayım başlar.
+ * Geri sayım bitene kadar buton tekrar kullanılamaz.
+ * Kazanılan ödül çark animasyonu bitişinde gösterilir.
+
+# Notlar
+
+ * Çark boyutu ve dilim sayısı props ile değiştirilebilir (WheelSvg).
+ * Dilim sayısı çarktaki ödül sayısına eşittir.
+ * Animasyon ve geri sayım süresi useWheelLogic ve useCountDown hook’larında ayarlanabilir.
+ * LocalStorage kullanımı demo amaçlıdır, backend ile entegre edilebilecek şekilde kurgulanmıştır.
+
